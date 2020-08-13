@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<form method="post" enctype="multipart/form-data" style="margin-top: 10%;margin-left: 30%;">
+    <dl>
+		<p>
+			<input type="file" name="files[]" multiple>
+		</p>
+    </dl>
+    <p>
+		<input type="submit" value="Submit" class="btn btn-outline-success">
+	</p>
+</form>
+
+{% endblock %}
