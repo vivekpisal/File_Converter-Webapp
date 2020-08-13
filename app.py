@@ -1,6 +1,5 @@
 from flask import Flask,render_template,request,send_file
 import os
-import img2pdf
 from PIL import Image
 
 
@@ -14,16 +13,16 @@ def home():
 		f=[]
 		for i in file1:
 			f.append(i.filename)
-			i.save(f'static/images/{i.filename}')
+			i.save(f'static/{i.filename}')
 		imagelist=[]
 		for j in f:
-			new=Image.open(f"static/images/{j}")
+			new=Image.open(f"static/{j}")
 			im1=new.convert('RGB')
 			imagelist.append(im1)
-		im1.save(f'static/images/myImages.pdf',save_all=True, append_images=imagelist)
+		im1.save(f'static/myImages.pdf',save_all=True, append_images=imagelist)
 		for i in file1:
-			os.remove(f'static/images/{i.filename}')
-		return render_template('pdf_download.html',value='static/images/myImages.pdf')
+			os.remove(f'static/{i.filename}')
+		return render_template('pdf_download.html',value='static/myImages.pdf')
 	return render_template("upload_img.html")
 
 
